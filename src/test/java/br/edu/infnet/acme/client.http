@@ -1,0 +1,98 @@
+###
+
+GET http://localhost:8082
+
+###
+# Consulta todos os usuarios
+###
+
+GET http://localhost:8082/usuarios
+
+###
+# Consulta usuario por id
+###
+
+GET http://localhost:8082/usuarios/2
+
+###
+# Cadastra usuario
+###
+
+POST http://localhost:8082/usuarios
+Content-Type: application/json
+{
+    "id": 2,
+    "nome": "WanirOmena",
+    "email": "wanir@omena.com",
+    "password": "123456",
+    "username": "waniromena"
+}
+
+###
+
+POST http://localhost:8082/usuarios
+Content-Type: application/json
+{
+    "username": "marta",
+    "password": "marta@email.com"
+}
+
+###
+
+PUT http://localhost:8082/usuarios/1
+Content-Type: application/json
+{
+    "nome": "Jennifer Estevez",
+    "email": "jennifer@email.com",
+    "password": "123456",
+    "username": "jenniferomena"
+}
+
+###
+
+DELETE http://localhost:8082/usuarios/2
+
+###
+# Consulta todos os Produto
+###
+
+GET http://localhost:8082/produtos
+
+###
+# Consulta Produto por id
+###
+
+GET  http://localhost:8082/produtos/1
+
+###
+# Cadastrar um Produto
+###
+
+POST http://localhost:8082/produtos
+Content-Type: application/json
+{
+  "nome": "Mochila",
+  "marca": "Nike",
+  "cotacao": [{"nome: Nike", "fornecedor":  "Fornecedor1", "preco":  100}]
+}
+
+###
+
+PUT http://localhost:8082/produtos/1
+Content-Type: application/json
+{
+  "nome": "Bolsa",
+  "marca": "Chanel"
+}
+
+###
+
+PATCH http://localhost:8082/produtos/1
+Content-Type: application/json
+{
+  "marca": "Chanel"
+}
+
+###
+
+DELETE http://localhost:8082/produtos/1
