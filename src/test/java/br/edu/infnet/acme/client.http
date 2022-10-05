@@ -63,11 +63,18 @@ DELETE http://localhost:8082/usuarios/2
 
 GET http://localhost:8082/produtos
 #Authorization: Bearer dba4Qli-tYWyGHKm4e0LnKWa5Lg
+
 ###
 # Consulta Produto por id
 ###
 
-GET  http://localhost:8082/produtos/4
+GET  http://localhost:8082/produtos/2
+
+###
+# Gerar Csv do Produto por id
+###
+
+GET  http://localhost:8082/produtos/gerarCsv/1
 
 ###
 # Cadastrar um Produto
@@ -98,3 +105,7 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:8082/produtos/4
+
+###
+
+GET http://localhost:8082/bucket/

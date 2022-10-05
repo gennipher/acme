@@ -3,6 +3,10 @@ package br.edu.infnet.acme.service;
 import br.edu.infnet.acme.model.Usuario;
 import br.edu.infnet.acme.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +23,10 @@ public class UsuarioService {
 
     // CRIAR USUARIO
     public Usuario salvar(Usuario usuario) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String password = usuario.getPassword();
+        String bcryptPassword = encoder.encode(password);
+        usuario.setPassword(bcryptPassword);
         return usuarioRepository.save(usuario);
     }
 

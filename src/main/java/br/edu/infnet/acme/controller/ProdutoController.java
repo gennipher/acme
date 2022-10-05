@@ -1,10 +1,17 @@
 package br.edu.infnet.acme.controller;
 
 import br.edu.infnet.acme.model.Produto;
+import br.edu.infnet.acme.service.CsvService;
 import br.edu.infnet.acme.service.ProdutoService;
+import com.amazonaws.util.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/produtos")
@@ -12,6 +19,9 @@ public class ProdutoController {
 
     @Autowired
     ProdutoService produtoService;
+
+    @Autowired
+    CsvService csvService;
 
     //LISTAR TODOS OS PRODUTOS
     @GetMapping
@@ -30,6 +40,20 @@ public class ProdutoController {
             return ResponseEntity.ok().body(produto);
         } catch (Exception e) {
             return ResponseEntity.status(404).body("Nenhum produto encontrado.");
+        }
+    }
+
+    // GERAR CSV POR ID DO PRODUTO
+    @GetMapping("/gerarCsv/{id}")
+    public ResponseEntity gerarCsv(@PathVariable long id) {
+        try {
+            var produto = produtoService.exibir(id);
+            csvService.ProdutoCsv(produto);
+            return ResponseEntity.ok().body(produto);
+
+        } catch(Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(404).body("Lista de Produtos Vazia.");
         }
     }
 
