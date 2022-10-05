@@ -35,10 +35,10 @@ POST http://localhost:8082/usuarios
 Content-Type: application/json
 
 {
-  "nome": "Guilherme Omena",
-  "email": "guilherme@omena.com",
+  "nome": "Leonardo Junger",
+  "email": "leonardo@junger.com",
   "password": "123456",
-  "username": "guilhermeomena"
+  "username": "leonardojunger"
 }
 
 ###
@@ -47,15 +47,15 @@ PUT http://localhost:8082/usuarios/7
 Content-Type: application/json
 
 {
-  "nome": "Giselle Lessa",
-  "username": "gisellelessa",
-  "email": "giselle@lessa.com",
+  "nome": "Giselle Estevez",
+  "username": "giselleestevez",
+  "email": "giselle@estevez.com",
   "password": "123456"
 }
 
 ###
 
-DELETE http://localhost:8082/usuarios/2
+DELETE http://localhost:8082/usuarios/9
 
 ###
 # Consulta todos os Produto
@@ -90,8 +90,6 @@ Content-Type: application/json
 }
 
 ###
-"cotacao": [{"nome: Nike", "fornecedor":  "Fornecedor1", "preco":  100}]
-###
 
 PUT http://localhost:8082/produtos/2
 Content-Type: application/json
@@ -104,7 +102,7 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:8082/produtos/4
+DELETE http://localhost:8082/produtos/6
 
 ###
 
