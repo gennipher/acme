@@ -4,13 +4,13 @@ import javax.persistence.*;
 
 @Entity(name = "produtos")
 public class Produto {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nome;
     private String marca;
 
+    private String valor;
     public Produto(){}
     public Produto(long id, String nome, String marca) {
         this.setId(id);
@@ -39,13 +39,16 @@ public class Produto {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
     @Override
     public String toString() {
-        return "Produto [" +
-                "id=" + id +
-                ", nome=" + nome +
-                ", marca=" + marca +
-                "]";
+        return "Produto [id=" + id + ", marca=" + marca + ", nome=" + nome + "]";
+    }
+
+    public String getValor() {
+        return valor;
+    }
+
+    public void setValor(String valor) {
+        this.valor = valor;
     }
 }

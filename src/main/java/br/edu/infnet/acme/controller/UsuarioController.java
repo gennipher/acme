@@ -34,21 +34,6 @@ public class UsuarioController {
         return ResponseEntity.ok().body(usuario);
     }
 
-    // REMOVER USUARIO
-    @DeleteMapping("/{id}")
-    public ResponseEntity remover(@PathVariable("id") long id) {
-
-        boolean resultado = usuarioService.excluir(id);
-        if(resultado) {
-            return ResponseEntity.ok().body("Usuário excluido.");
-        } else {
-            return ResponseEntity.internalServerError().body("Erro ao excluir.");
-        }
-    }
-
-    // Daqui pra cima funciona
-    //---------------------------
-
     // CADASTRAR USUARIO
     @PostMapping()
     public ResponseEntity inserir(@RequestBody Usuario usuario) {
@@ -65,15 +50,24 @@ public class UsuarioController {
 
     // ATUALIZAR USUARIO
     @PutMapping("/{id}")
-    public ResponseEntity atualizar(@PathVariable("id") int id, @RequestBody Usuario usuario) {
-
+    public ResponseEntity atualizar(@PathVariable Long id, @RequestBody Usuario usuario) {
         if (usuario.getUsername() == null || usuario.getEmail() == null || usuario.getPassword() == null)
             return ResponseEntity.status(400).body("Atualize pelo menos um dos campos: Username, Email ou Password.");
-
         usuario.setId(id);
-        usuario = usuarioService.atualizar(usuario);
-        return ResponseEntity.ok().body(usuario);
+        usuario = usuarioService.salvar(usuario);
+        return ResponseEntity.status(201).body(usuario);
     }
 
 
+    // REMOVER USUARIO
+    @DeleteMapping("/{id}")
+    public ResponseEntity remover(@PathVariable("id") long id) {
+
+        boolean resultado = usuarioService.excluir(id);
+        if(resultado) {
+            return ResponseEntity.ok().body("Usuário excluido.");
+        } else {
+            return ResponseEntity.internalServerError().body("Erro ao excluir.");
+        }
+    }
 }

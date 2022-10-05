@@ -3,6 +3,19 @@
 GET http://localhost:8082
 
 ###
+# Authorization: Basic username:password
+###
+
+#POST http://localhost:8082/oauth/token
+#Content-Type: application/x-www-form-urlencoded
+#Authorization: Basic client-id-test:client-secret-test
+#
+#grant_type=password&username=usuario1&password=654321
+#// informações de um usuário
+
+
+
+###
 # Consulta todos os usuarios
 ###
 
@@ -12,7 +25,7 @@ GET http://localhost:8082/usuarios
 # Consulta usuario por id
 ###
 
-GET http://localhost:8082/usuarios/2
+GET http://localhost:8082/usuarios/4
 
 ###
 # Cadastra usuario
@@ -20,32 +33,24 @@ GET http://localhost:8082/usuarios/2
 
 POST http://localhost:8082/usuarios
 Content-Type: application/json
+
 {
-    "id": 2,
-    "nome": "WanirOmena",
-    "email": "wanir@omena.com",
-    "password": "123456",
-    "username": "waniromena"
+  "nome": "Guilherme Omena",
+  "email": "guilherme@omena.com",
+  "password": "123456",
+  "username": "guilhermeomena"
 }
 
 ###
 
-POST http://localhost:8082/usuarios
+PUT http://localhost:8082/usuarios/7
 Content-Type: application/json
-{
-    "username": "marta",
-    "password": "marta@email.com"
-}
 
-###
-
-PUT http://localhost:8082/usuarios/1
-Content-Type: application/json
 {
-    "nome": "Jennifer Estevez",
-    "email": "jennifer@email.com",
-    "password": "123456",
-    "username": "jenniferomena"
+  "nome": "Giselle Lessa",
+  "username": "gisellelessa",
+  "email": "giselle@lessa.com",
+  "password": "123456"
 }
 
 ###
@@ -57,12 +62,12 @@ DELETE http://localhost:8082/usuarios/2
 ###
 
 GET http://localhost:8082/produtos
-
+#Authorization: Bearer dba4Qli-tYWyGHKm4e0LnKWa5Lg
 ###
 # Consulta Produto por id
 ###
 
-GET  http://localhost:8082/produtos/1
+GET  http://localhost:8082/produtos/4
 
 ###
 # Cadastrar um Produto
@@ -70,29 +75,26 @@ GET  http://localhost:8082/produtos/1
 
 POST http://localhost:8082/produtos
 Content-Type: application/json
+
 {
   "nome": "Mochila",
   "marca": "Nike",
-  "cotacao": [{"nome: Nike", "fornecedor":  "Fornecedor1", "preco":  100}]
+  "valor": "R$ 99,99"
 }
 
 ###
+"cotacao": [{"nome: Nike", "fornecedor":  "Fornecedor1", "preco":  100}]
+###
 
-PUT http://localhost:8082/produtos/1
+PUT http://localhost:8082/produtos/2
 Content-Type: application/json
+
 {
-  "nome": "Bolsa",
-  "marca": "Chanel"
+  "nome": "monitor",
+  "marca": "aoc",
+  "valor": "R$ 768,98"
 }
 
 ###
 
-PATCH http://localhost:8082/produtos/1
-Content-Type: application/json
-{
-  "marca": "Chanel"
-}
-
-###
-
-DELETE http://localhost:8082/produtos/1
+DELETE http://localhost:8082/produtos/4

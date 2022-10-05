@@ -12,27 +12,27 @@ public class UsuarioService {
     @Autowired
     UsuarioRepository usuarioRepository;
 
-    // Listar
+    // LISTAR USUARIO
     public List<Usuario> listar() {
         return usuarioRepository.findAll();
     }
 
-    // criar
+    // CRIAR USUARIO
     public Usuario salvar(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
 
-    // exibir
+    // EXIBIR USUARIO
     public Usuario exibir(Long id) {
         return usuarioRepository.findById(id).get();
     }
 
-    // atualizar
+    // ATUALIZAR USUARIO
     public Usuario atualizar(Usuario usuario) {
         return this.salvar(usuario);
     }
 
-    // EXCLUIR
+    // EXCLUIR USUARIO
     public boolean excluir(Long id) {
 
         try {
